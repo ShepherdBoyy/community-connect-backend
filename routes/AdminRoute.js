@@ -151,7 +151,7 @@ router.put("/edit_residents/:id", (req, res) => {
     req.body.occupation,
   ]
   con.query(sql, [...values, id], (err, result) => {
-    if (err) return res.json({ Status: false, Error: "Query Error" })
+    if (err) return res.json({ Status: false, Error: "Query Error" + err })
     return res.json({ Status: true, Result: result })
   })
 })
