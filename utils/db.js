@@ -1,5 +1,3 @@
-import mysql from "mysql"
-
 require("dotenv").config()
 const mysql = require("mysql2")
 
