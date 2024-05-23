@@ -12,7 +12,7 @@ app.use(
 )
 app.use(express.json())
 app.use("/auth", adminRouter)
-app.use(express.static("public"))
+app.use(express.static("assets"))
 
 app.listen(3000, () => {
   console.log("Server is Running")
