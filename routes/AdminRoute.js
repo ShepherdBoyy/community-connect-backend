@@ -150,6 +150,16 @@ router.put("/edit_residents/:id", (req, res) => {
     req.body.educationalAttainment,
     req.body.occupation,
   ]
+
+  const birthdate = new Date(req.body.birthdate)
+  const formattedBirthdate = birthdate
+    .toISOString()
+    .slice(0, 19)
+    .replace("T", " ")
+
+  // Update the birthdate value in the array
+  values[3] = formattedBirthdate
+
   con.query(sql, [...values, id], (err, result) => {
     if (err) return res.json({ Status: false, Error: "Query Error" + err })
     return res.json({ Status: true, Result: result })
