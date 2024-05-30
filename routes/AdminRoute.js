@@ -241,10 +241,9 @@ router.get("/password", (req, res) => {
 })
 
 router.put("/change_password", (req, res) => {
-  const sql = "UPDATE admin SET password = ? WHERE id = 1"
-  console.log(req.body.newPassword)
+  const sql = "UPDATE admin SET password = ?, email = ? WHERE id = 1"
 
-  con.query(sql, [req.body.newPassword], (err, result) => {
+  con.query(sql, [req.body.newPassword, req.body.newEmail], (err, result) => {
     if (err) return res.json({ Status: false, Error: "Query Error" })
     return res.json({ Status: true, Result: result })
   })
