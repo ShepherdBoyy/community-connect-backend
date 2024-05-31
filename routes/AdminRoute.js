@@ -251,8 +251,16 @@ router.put("/change_password", (req, res) => {
 
 router.post("/add_account", (req, res) => {
   const sql = "INSERT INTO admin (`email`, `password`) VALUES (?)"
-  console.log(req.body)
   const values = [req.body.email, req.body.password]
+  con.query(sql, [values], (err, result) => {
+    if (err) return res.json({ Status: false, Error: "Query Error" + err })
+    return res.json({ Status: true })
+  })
+})
+
+router.post("/delete_history", (req, res) => {
+  const sql = "INSERT INTO history (`reason`, `other_reason`) VALUES (?)"
+  const values = [req.body.reason, req.body.others]
   con.query(sql, [values], (err, result) => {
     if (err) return res.json({ Status: false, Error: "Query Error" + err })
     return res.json({ Status: true })
