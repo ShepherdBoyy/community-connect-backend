@@ -259,8 +259,9 @@ router.post("/add_account", (req, res) => {
 })
 
 router.post("/delete_history", (req, res) => {
-  const sql = "INSERT INTO history (`reason`, `other_reason`) VALUES (?)"
-  const values = [req.body.reason, req.body.others]
+  const sql =
+    "INSERT INTO history (`name`, `reason`, `other_reason`) VALUES (?)"
+  const values = [req.body.name, req.body.reason, req.body.others]
   con.query(sql, [values], (err, result) => {
     if (err) return res.json({ Status: false, Error: "Query Error" + err })
     return res.json({ Status: true })
