@@ -249,11 +249,11 @@ router.put("/change_password", (req, res) => {
   })
 })
 
-router.post("/add_acount", (req, res) => {
+router.post("/add_account", (req, res) => {
   const sql = "INSERT INTO admin (`email`, `password`) VALUES (?)"
   const values = [req.body.email, req.body.password]
   con.query(sql, [values], (err, result) => {
-    if (err) return res.json({ Status: false, Error: "Query Error" })
+    if (err) return res.json({ Status: false, Error: "Query Error" + err })
     return res.json({ Status: true })
   })
 })
