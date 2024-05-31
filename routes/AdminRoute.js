@@ -251,6 +251,7 @@ router.put("/change_password", (req, res) => {
 
 router.post("/add_account", (req, res) => {
   const sql = "INSERT INTO admin (`email`, `password`) VALUES (?)"
+  console.log(req.body)
   const values = [req.body.email, req.body.password]
   con.query(sql, [values], (err, result) => {
     if (err) return res.json({ Status: false, Error: "Query Error" + err })
