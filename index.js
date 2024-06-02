@@ -15,5 +15,5 @@ app.use("/auth", adminRouter)
 app.use(express.static("public"))
 
 app.listen(3000, () => {
-  console.log("Server is Running")
+  console.log("Server is Runningg")
 })
